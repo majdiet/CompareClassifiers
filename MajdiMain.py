@@ -16,8 +16,10 @@ import MajdiUtils as MUtil
 #GET DATA
 center1 = np.array([0,0])
 center2 = np.array([4,3])
-nbsamples = 400
-variance = 0.7
+nbsamples = 1000
+variance = 2.5
+np.random.seed(0)
+
 bluepoints = np.random.multivariate_normal(mean=center2,cov=np.identity(2) * variance,size=nbsamples)
 fbp= np.c_[bluepoints,np.ones(nbsamples)]
 redpoints = np.random.multivariate_normal(mean=center1,cov=np.identity(2) * variance,size=nbsamples)
@@ -106,7 +108,8 @@ plt.plot(x,y_O,color='orange')
 #PEGASOS IS GREEN
 plt.plot(x,y_P,color='green')
 
-plt.style.use('dark_background')
+plt.xlabel("iterations")
+plt.ylabel("training error") 
 plt.show()
 
 # plt.xlabel('Nb of iterations')
