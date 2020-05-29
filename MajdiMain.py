@@ -17,7 +17,16 @@ import MajdiUtils as MUtil
 center1 = np.array([0,0])
 center2 = np.array([4,3])
 nbsamples = 500
-variance = 0.5
+
+#Variance for scenario 1
+# variance = 0.5
+
+#Variance for scenario 2
+# variance = 2.0
+
+#Variance for scenario 3
+variance = 4.0
+
 np.random.seed(0)
 
 bluepoints = np.random.multivariate_normal(mean=center2,cov=np.identity(2) * variance,size=nbsamples)
@@ -29,11 +38,11 @@ mData = rData[np.random.permutation(2*nbsamples)]
 labels = mData[:,-1]
 vectors = mData[:,:-1]
 
-#DISPLAY DATA
-# colors = ['b' if label == 1 else 'r' for label in labels]
-# plt.scatter(vectors[:,0], vectors[:,1], s=40, c=colors)
-# xmin, xmax = plt.axis()[:2]
-# plt.show()
+#[OPTIONAL] DISPLAY DATA
+colors = ['b' if label == 1 else 'r' for label in labels]
+plt.scatter(vectors[:,0], vectors[:,1], s=40, c=colors)
+xmin, xmax = plt.axis()[:2]
+plt.show()
 
 
 #RUN ALGORITHMS
