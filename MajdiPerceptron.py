@@ -23,10 +23,10 @@ def PerceptronStepO(t,t0,err,EData,nc):
     rt0 =t0
     rErr = err
 
-    minE = np.min(EData[:,-1])
+    minE = np.min(EData[:,-2])
 
     if err > minE:
-        minIx = np.argmin(EData[:,-1])
+        minIx = np.argmin(EData[:,-2])
         rt = EData[minIx,2*nc:3*nc-1]
         rt0 = EData[minIx,3*nc-1]
         rErr = minE

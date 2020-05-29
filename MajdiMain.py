@@ -16,8 +16,8 @@ import MajdiUtils as MUtil
 #GET DATA
 center1 = np.array([0,0])
 center2 = np.array([4,3])
-nbsamples = 1000
-variance = 2.5
+nbsamples = 500
+variance = 0.5
 np.random.seed(0)
 
 bluepoints = np.random.multivariate_normal(mean=center2,cov=np.identity(2) * variance,size=nbsamples)
@@ -30,10 +30,10 @@ labels = mData[:,-1]
 vectors = mData[:,:-1]
 
 #DISPLAY DATA
-colors = ['b' if label == 1 else 'r' for label in labels]
-plt.scatter(vectors[:,0], vectors[:,1], s=40, c=colors)
-xmin, xmax = plt.axis()[:2]
-plt.show()
+# colors = ['b' if label == 1 else 'r' for label in labels]
+# plt.scatter(vectors[:,0], vectors[:,1], s=40, c=colors)
+# xmin, xmax = plt.axis()[:2]
+# plt.show()
 
 
 #RUN ALGORITHMS
@@ -97,25 +97,22 @@ y_O = mExecData[:,4*nCols+2]
 y_P = mExecData[:,4*nCols+3]
 
 #PERCEPTRON IS RED
-plt.plot(x,y_S,color='red')
+plt.plot(x,y_S,color='red',label="Perceptron")
 
 #AVERAGED PERCEPTRON IS BLUE
-plt.plot(x,y_A,color='blue')
+plt.plot(x,y_A,color='blue',label="Avg Perceptron")
 
 #CUSTOMIZED PERCEPTRON IS ORANGE
-plt.plot(x,y_O,color='orange')
+plt.plot(x,y_O,color='orange',label="Pocket*")
 
 #PEGASOS IS GREEN
-plt.plot(x,y_P,color='green')
+plt.plot(x,y_P,color='green',label="Pegasos")
 
+plt.title('Training Error vs Iterations')
 plt.xlabel("iterations")
-plt.ylabel("training error") 
+plt.ylabel("training error")
+plt.legend(loc="upper right", shadow=True, ncol=4)
 plt.show()
 
-# plt.xlabel('Nb of iterations')
-# plt.ylabel('Errors')
-# plt.title('Classification Error Rate')
-# plt.show()
-
-print("OK")
+print("COMPLETE")
 
